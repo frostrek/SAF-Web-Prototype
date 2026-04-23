@@ -1,10 +1,16 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform, type Variants } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, type Variants, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowDown } from "lucide-react";
-import heroImg from "@/assets/hero-factory.jpg";
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+
+import hero1 from "@/assets/hero_1.png";
+import hero2 from "@/assets/hero_2.png";
+import hero3 from "@/assets/hero_3.png";
+import hero4 from "@/assets/hero_4.png";
+
+const heroImages = [hero1, hero2, hero3, hero4];
 
 const MotionLink = motion.create(Link);
 
@@ -97,11 +103,19 @@ const MagneticButton = ({
 };
 
 export const Hero = () => {
+  const [currentImg, setCurrentImg] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const imgX = useMotionValue(0);
   const imgY = useMotionValue(0);
   const smoothX = useSpring(imgX, { stiffness: 30, damping: 20 });
   const smoothY = useSpring(imgY, { stiffness: 30, damping: 20 });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImg((prev) => (prev + 1) % heroImages.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const handleMouse = (e: MouseEvent) => {
@@ -116,26 +130,34 @@ export const Hero = () => {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex flex-col justify-end overflow-hidden noise">
-      {/* Background image with mouse parallax + Ken Burns */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ x: smoothX, y: smoothY }}
-      >
-        <motion.img
-          src={heroImg}
-          alt="Industrial feed manufacturing plant interior"
-          className="w-full h-full object-cover scale-110"
-          width={1920}
-          height={1280}
-          initial={{ scale: 1.2 }}
-          animate={{ scale: 1.05 }}
-          transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
-        />
+      {/* Background carousel with mouse parallax + Ken Burns */}
+      <div className="absolute inset-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentImg}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute inset-0"
+            style={{ x: smoothX, y: smoothY }}
+          >
+            <motion.img
+              src={heroImages[currentImg]}
+              alt="Aquatic feed manufacturing and marine life"
+              className="w-full h-full object-cover scale-110"
+              width={1920}
+              height={1280}
+              initial={{ scale: 1.2 }}
+              animate={{ scale: 1.05 }}
+              transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
+            />
+          </motion.div>
+        </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/20 to-background" />
-      </motion.div>
+      </div>
 
-      {/* Grid overlay */}
-      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
+
 
       {/* Top meta */}
       <motion.div
@@ -194,7 +216,7 @@ export const Hero = () => {
             transition={{ delay: 1.0, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="col-span-12 lg:col-span-4 lg:pb-6 space-y-6"
           >
-            <p className="text-base md:text-lg text-foreground/70 max-w-md text-balance">
+            <p className="text-base md:text-lg text-foreground font-semibold max-w-md text-balance leading-relaxed">
               Level Three B-BBEE certified feed factory producing high-quality
               aquatic feeds and contract-manufactured pet foods for local and
               export markets.

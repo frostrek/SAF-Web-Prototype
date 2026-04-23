@@ -70,15 +70,15 @@ export const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-background/85 backdrop-blur-xl border-b border-border"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-background/85 backdrop-blur-xl border-b border-border`}
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center group">
-            <img src="/logo.ico" alt="Aqua/Feed Logo" className="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <img src="/logo.ico" alt="Specialised Aquatic Feeds" className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            <div className="flex flex-col leading-[0.85]">
+              <span className="font-display font-black text-base md:text-lg tracking-tighter text-[#2FA8D5]">SPECIALISED</span>
+              <span className="font-display font-bold text-[8px] md:text-[9px] tracking-[0.2em] text-[#A39161]">AQUATIC FEEDS</span>
+            </div>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
             {links.map((l) => (

@@ -1,6 +1,10 @@
 import { Shell } from "lucide-react";
 import { ProductPage } from "@/components/ProductPage";
 import heroImage from "@/assets/product-abalone.jpg";
+import abalone1 from "@/assets/abalone_1.png";
+import abalone2 from "@/assets/abalone_2.png";
+import abalone3 from "@/assets/abalone_3.png";
+import abalone4 from "@/assets/abalone_4.png";
 
 const Abalone = () => (
   <ProductPage
@@ -10,9 +14,7 @@ const Abalone = () => (
     intro="Over the years SAF has made significant progress in formulating optimal abalone feeds for weaning, growth, health and harvest yield. We have developed feeds for the different nutritional requirements of abalone as they age within the production process. Our feeds provide excellent growth, shell strength, eFCR and processing yields. No fish oils are used in the production of our abalone feeds and all raw materials used are fully traceable to source."
     Icon={Shell}
     heroImage={heroImage}
-    // To add gallery images: import them and pass as array
-    // import abalone1 from "@/assets/abalone_1.png";
-    // galleryImages={[abalone1]}
+    galleryImages={[abalone1, abalone2, abalone3, abalone4]}
     sections={[
       {
         title: "SAF Weaning feed",

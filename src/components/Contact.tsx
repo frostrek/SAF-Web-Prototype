@@ -55,7 +55,8 @@ export const Contact = () => {
 
   return (
     <section id="contact" className="py-24 md:py-32 border-b border-border relative">
-      <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
+
+
       <div className="container relative">
         <div className="grid grid-cols-12 gap-6 lg:gap-16">
           <div className="col-span-12 lg:col-span-5">

@@ -10,7 +10,8 @@ import img5 from "@/assets/img_5.png";
 export const Story = () => {
   return (
     <section id="story" className="py-24 md:py-40 border-b border-border bg-background relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
+
+
 
       <div className="container relative z-10">
         <motion.div

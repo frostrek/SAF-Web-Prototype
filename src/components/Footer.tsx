@@ -16,8 +16,8 @@ export const Footer = () => {
     <footer className="bg-foreground text-background relative overflow-hidden">
       {/* Large watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-        <span className="font-display text-[20vw] font-bold tracking-tight text-background/[0.03] whitespace-nowrap">
-          AQUA/FEED
+        <span className="font-display text-[15vw] font-bold tracking-tight text-background/[0.03] whitespace-nowrap uppercase">
+          Specialised Aquatic
         </span>
       </div>
 
@@ -30,8 +30,12 @@ export const Footer = () => {
             transition={{ duration: 0.6 }}
             className="col-span-12 md:col-span-5"
           >
-            <div className="font-display text-3xl font-bold tracking-tight mb-4">
-              AQUA<span className="text-background/50">/</span>FEED
+            <div className="flex items-center gap-2.5 mb-6">
+              <img src="/logo.ico" alt="SAF Logo" className="h-8 md:h-10 w-auto object-contain" />
+              <div className="flex flex-col leading-[0.85]">
+                <span className="font-display font-black text-xl md:text-2xl tracking-tighter text-[#2FA8D5]">SPECIALISED</span>
+                <span className="font-display font-bold text-[9px] md:text-[10px] tracking-[0.25em] text-[#A39161]">AQUATIC FEEDS</span>
+              </div>
             </div>
             <p className="text-background/60 max-w-sm">
               Specialised aquatic feeds and contract pet-food manufacturing,
@@ -107,7 +111,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-16 pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-background/50 uppercase tracking-widest">
-          <span>&copy; {new Date().getFullYear()} Aqua/Feed. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Specialised Aquatic Feeds. All rights reserved.</span>
           <span>B-BBEE Level 3 Certified</span>
           <motion.button
             onClick={scrollToTop}

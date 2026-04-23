@@ -140,108 +140,66 @@ export const ProductPage = ({
     window.scrollTo(0, 0);
   }, [name]);
 
-  // Hero mouse parallax
-  const imgX = useMotionValue(0);
-  const imgY = useMotionValue(0);
-  const smoothX = useSpring(imgX, { stiffness: 30, damping: 20 });
-  const smoothY = useSpring(imgY, { stiffness: 30, damping: 20 });
-
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      imgX.set(((e.clientX - w / 2) / w) * -20);
-      imgY.set(((e.clientY - h / 2) / h) * -15);
-    };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, [imgX, imgY]);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
       {/* ═══════════════════ HERO ═══════════════════ */}
-      <section className="relative pt-32 md:pt-40 pb-20 md:pb-28 border-b border-border overflow-hidden min-h-[90vh] flex flex-col justify-end noise">
+      <section className="relative h-[70vh] border-b border-border overflow-hidden noise">
         {heroImage && (
-          <motion.div className="absolute inset-0" style={{ x: smoothX, y: smoothY }}>
-            <motion.img
+          <div className="absolute inset-0">
+            <img
               src={heroImage}
-              alt={`${name} — industrial photograph`}
-              width={1920}
-              height={1280}
-              initial={{ scale: 1.2 }}
-              animate={{ scale: 1.05 }}
-              transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
-              className="absolute inset-0 w-full h-full object-cover grayscale opacity-60"
+              alt={`${name}`}
+              className="w-full h-full object-cover brightness-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
-          </motion.div>
+          </div>
         )}
-        <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
+      </section>
 
-        <div className="container relative z-10">
-          {/* Back link */}
+      {/* ═══════════════════ PRODUCT HEADER ═══════════════════ */}
+      <section className="py-16 md:py-24 border-b border-border bg-background">
+        <div className="container">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             <Link
               to="/#products"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-foreground transition-colors mb-10 group"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-foreground transition-colors mb-12 group"
             >
               <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" /> Back to all products
             </Link>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
-            <div className="md:col-span-8">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex items-center gap-3 mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground"
-              >
-                <span className="w-8 h-px bg-foreground" />
-                <span>{num} / Product</span>
-              </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-12">
 
-              <h1 className="font-display text-6xl md:text-8xl font-bold tracking-tighter text-balance">
+
+              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-balance mb-10">
                 <SplitText text={name} />
               </h1>
-
-              <motion.div
-                variants={lineReveal}
-                initial="hidden"
-                animate="visible"
-                className="origin-left h-px bg-foreground/40 mt-8 w-full max-w-sm"
-              />
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl"
+                transition={{ delay: 0.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="text-xl md:text-2xl text-foreground/80 max-w-3xl leading-relaxed"
               >
                 {tagline}
               </motion.p>
             </div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.2, duration: 1 }}
-              className="md:col-span-4 flex md:justify-end"
-            >
-              <Icon size={120} strokeWidth={0.75} className="opacity-40" />
-            </motion.div>
+
           </div>
         </div>
       </section>
 
       {/* ═══════════════════ INTRO + GALLERY ═══════════════════ */}
       <section className="py-20 md:py-28 border-b border-border relative overflow-hidden">
-        <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
+
         <div className="container relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             {/* Text column */}
@@ -250,7 +208,7 @@ export const ProductPage = ({
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-3 mb-8 text-xs uppercase tracking-[0.25em] text-muted-foreground"
+                className="flex items-center gap-3 mb-8 text-xs uppercase tracking-[0.25em] text-foreground font-black"
               >
                 <span className="w-8 h-px bg-foreground" />
                 <span>Overview</span>
@@ -479,7 +437,7 @@ export const ProductPage = ({
 
       {/* ═══════════════════ CONTACT BLOCK ═══════════════════ */}
       <section id="contact-form" className="py-20 md:py-28 border-b border-border relative">
-        <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
+
         <div className="container relative">
           <motion.div
             initial={{ opacity: 0, x: -20 }}

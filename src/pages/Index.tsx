@@ -12,7 +12,7 @@ import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {
-    document.title = "Aqua/Feed — Specialised Aquatic Feeds | Hermanus, ZA";
+    document.title = "Specialised Aquatic Feeds | Hermanus, ZA";
     const meta = document.querySelector('meta[name="description"]') || document.createElement("meta");
     meta.setAttribute("name", "description");
     meta.setAttribute(

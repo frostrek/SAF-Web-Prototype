@@ -77,7 +77,8 @@ export const About = () => {
       ref={sectionRef}
       className="py-24 md:py-32 border-b border-border bg-background relative overflow-hidden"
     >
-      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
+
+
 
       <div className="container relative z-10">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-24">
