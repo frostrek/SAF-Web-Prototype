@@ -238,9 +238,8 @@ export const Hero = () => {
                 to="/#contact"
                 className="group inline-flex items-center gap-2 border border-foreground px-6 py-3.5 text-sm font-medium relative overflow-hidden transition-colors"
               >
-                <span className="relative z-10">Contact Us</span>
+                <span className="relative z-10 group-hover:text-background transition-colors duration-300">Contact Us</span>
                 <span className="absolute inset-0 bg-foreground translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                <span className="relative z-10 group-hover:text-background transition-colors duration-300" />
               </MagneticButton>
             </div>
           </motion.div>
