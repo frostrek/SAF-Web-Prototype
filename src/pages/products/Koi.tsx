@@ -2,6 +2,9 @@ import { Waves } from "lucide-react";
 import { ProductPage } from "@/components/ProductPage";
 import heroImage from "@/assets/product-koi.jpg";
 
+import koi1 from "@/assets/koi_1.png";
+import koi2 from "@/assets/koi_2.png";
+
 const Koi = () => (
   <ProductPage
     num="05"
@@ -10,9 +13,7 @@ const Koi = () => (
     intro="OptiGoi is our premium koi feed formulated to enhance colour vibrancy, support immune health and promote vitality. Manufactured at our state-of-the-art Hermanus plant using high-pressure extrusion for maximum digestibility and nutrient uptake."
     Icon={Waves}
     heroImage={heroImage}
-    // To add gallery images: import them and pass as array
-    // import koi1 from "@/assets/koi_1.png";
-    // galleryImages={[koi1]}
+    galleryImages={[koi1, koi2]}
     sections={[
       {
         title: "Premium nutrition",

@@ -2,6 +2,9 @@ import { Bird } from "lucide-react";
 import { ProductPage } from "@/components/ProductPage";
 import heroImage from "@/assets/product-pigeon.jpg";
 
+import pigeon1 from "@/assets/pigeon_1.png";
+import pigeon2 from "@/assets/pigeon_2.png";
+
 const Pigeon = () => (
   <ProductPage
     num="06"
@@ -10,9 +13,7 @@ const Pigeon = () => (
     intro="Our balanced pigeon feeds are optimally formulated to supplement your pigeon's special grain mix at different times of the racing or breeding season to ensure your birds get everything they need."
     Icon={Bird}
     heroImage={heroImage}
-    // To add gallery images: import them and pass as array
-    // import pigeon1 from "@/assets/pigeon_1.png";
-    // galleryImages={[pigeon1]}
+    galleryImages={[pigeon1, pigeon2]}
     sections={[
       {
         title: "Natural protective benefits",

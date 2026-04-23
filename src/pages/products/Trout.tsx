@@ -2,6 +2,10 @@ import { Waves } from "lucide-react";
 import { ProductPage } from "@/components/ProductPage";
 import heroImage from "@/assets/product-trout.jpg";
 
+import trout1 from "@/assets/trout_1.png";
+import trout2 from "@/assets/trout_2.png";
+import trout3 from "@/assets/trout_3.png";
+
 const Trout = () => (
   <ProductPage
     num="02"
@@ -10,9 +14,7 @@ const Trout = () => (
     intro="Specialised Aquatic Feeds started manufacturing trout feed for the local trout market in October 2015. The team at SAF has progressed significantly in this area and has developed high quality feeds providing excellent growth and feed conversion rates. Our technical support team is able to provide you with advice and guidance in choosing the correct feed and feeding rates to achieve optimal growth in your chosen production system."
     Icon={Waves}
     heroImage={heroImage}
-    // To add gallery images: import them and pass as array
-    // import trout1 from "@/assets/trout_1.png";
-    // galleryImages={[trout1]}
+    galleryImages={[trout1, trout2, trout3]}
     sections={[
       {
         title: "Trout starter feeds",

@@ -2,6 +2,9 @@ import { Fish } from "lucide-react";
 import { ProductPage } from "@/components/ProductPage";
 import heroImage from "@/assets/product-catfish.jpg";
 
+import catfish1 from "@/assets/catfish_1.png";
+import catfish2 from "@/assets/catfish_2.png";
+
 const Catfish = () => (
   <ProductPage
     num="03"
@@ -10,9 +13,7 @@ const Catfish = () => (
     intro="Our floating catfish feeds are optimally formulated to provide your fish with the ideal nutrients required for their different growth stages. Contact our technical support team to advise you on the best choice of catfish pellet feed to suit your specific production system whether it be aquaponics, intensive grow-out or recreational home production."
     Icon={Fish}
     heroImage={heroImage}
-    // To add gallery images: import them and pass as array
-    // import catfish1 from "@/assets/catfish_1.png";
-    // galleryImages={[catfish1]}
+    galleryImages={[catfish1, catfish2]}
     sections={[
       {
         title: "Catfish starter feeds",
